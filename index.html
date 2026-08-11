@@ -2,7 +2,15 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 移动端基础适配：宽度=设备宽，初始=1，禁止用户缩放，允许布局延伸到刘海安全区 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<!-- iOS 专项：添加到主屏后全屏运行 + 状态栏样式 + 防止自动识别手机号变色 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no, email=no, address=no">
+<!-- iOS 顶部状态栏 / 安卓 Chrome 地址栏主题色 -->
+<meta name="theme-color" content="#5D9BFC">
+<meta name="apple-theme-color" content="#5D9BFC">
 <title>陈圆圆 - 资深头部策划</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,10 +26,30 @@
     color: var(--text);
     line-height: 1.6;
     background: linear-gradient(135deg, #FAE37C 0%, #C1E9D2 50%, #5D9BFC 100%);
-    background-attachment: fixed;
+    /* iOS Safari 不支持 background-attachment:fixed，用 scroll + 模拟固定效果 */
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     min-height: 100vh;
+    /* iOS 刘海屏 / 底部 Home 条安全区域 */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    /* iOS 禁止横屏或缩放时字体自动变大 */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* iOS 字体平滑渲染 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  /* 解决 iOS Safari 100vh 随地址栏高度跳动的问题 */
+  @supports (height: 100dvh) {
+    body { min-height: 100dvh; }
+    .hero { min-height: 100dvh; }
+    .thanks-section { min-height: 80dvh; }
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; /* 小屏再加一层安全区 */ padding-left: calc(24px + env(safe-area-inset-left)); padding-right: calc(24px + env(safe-area-inset-right)); }
   section { padding: 60px 0; position: relative; }
   .section-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
   .section-num { color: var(--blue); font-size: 36px; }
@@ -175,6 +203,98 @@
     .toc-grid { gap: 24px; }
     .project-card { flex-direction: column; }
     .project-img { width: 100%; height: 200px; }
+  }
+
+  /* ===== 6.3英寸 iPhone 精修 (≤ 480px) 如 iPhone 15 Pro Max ===== */
+  @media (max-width: 480px) {
+    body { font-size: 15px; }
+    .container { padding: 0 16px; padding-left: calc(16px + env(safe-area-inset-left)); padding-right: calc(16px + env(safe-area-inset-right)); }
+    section { padding: 40px 0; }
+
+    /* Hero 区域 */
+    .hero { padding: 40px 0; }
+    .hero-name { font-size: 30px; letter-spacing: 2px; }
+    .hero-role { font-size: 16px; }
+    .hero-contact { font-size: 12px; }
+    .hero-tagline { font-size: 14px; margin-bottom: 24px; }
+    .hero-photo { width: 104px; height: 132px; border-width: 2px; }
+    .stats-grid { gap: 10px; margin-bottom: 24px; }
+    .stat-card { padding: 14px 8px; border-radius: 12px; }
+    .stat-icon { font-size: 16px; margin-bottom: 4px; }
+    .stat-num { font-size: 22px; }
+    .stat-label { font-size: 10px; line-height: 1.4; }
+    .tag { padding: 8px 18px; font-size: 12px; }
+
+    /* 目录 */
+    .toc-section { padding: 56px 0; }
+    .toc-title { font-size: 22px; margin-bottom: 32px; }
+    .toc-item { padding: 12px 14px; border-radius: 10px; }
+    .toc-num { font-size: 20px; }
+    .toc-text { font-size: 13px; }
+
+    /* 通用标题 */
+    .section-title { font-size: 22px; gap: 8px; }
+    .section-num { font-size: 26px; }
+    .section-subtitle { font-size: 12px; margin-bottom: 20px; }
+    .period-label { font-size: 12px; margin-bottom: 14px; }
+
+    /* 卡片通用（工作/项目/作品） */
+    .work-grid, .project-grid { gap: 12px; margin-bottom: 18px; }
+    .work-card, .project-card, .work-item, .edu-info, .card { padding: 16px; border-radius: 12px; }
+    .work-title, .project-title, .work-item-title, .cp-title { font-size: 14px; }
+    .work-meta { font-size: 11px; margin-bottom: 8px; }
+    .work-desc, .project-list, .work-item-desc, .cp-points li, .edu-row, .skill-desc { font-size: 12.5px; }
+    .core-advantage, .edu-footer { font-size: 12px; margin-top: 12px; }
+
+    /* 项目卡图片 */
+    .project-img { height: 180px; }
+
+    /* 核心项目 */
+    .core-project { margin-bottom: 32px; }
+    .cp-header { margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
+    .cp-badge { font-size: 11px; padding: 5px 12px; }
+    .cp-images { gap: 10px; margin-bottom: 16px; }
+    .cp-img { height: 170px !important; border-width: 2px; border-radius: 8px; }
+    .cp-points li { padding-left: 16px; margin-bottom: 6px; }
+    .cp-points li::before { top: 8px; width: 6px; height: 6px; }
+
+    /* 自驱作品 */
+    .work-item-img { height: 140px; border-radius: 7px; }
+    .wh-tag { font-size: 11px; }
+
+    /* 教育与底色 */
+    .edu-grid { gap: 16px; }
+    .traits-label { font-size: 12px; margin: 16px 0 8px; }
+    .trait-tag { font-size: 12px; padding: 5px 12px; }
+    .skills-grid { gap: 8px; }
+    .skill-box { padding: 10px; border-radius: 6px; }
+    .skill-title { font-size: 12px; margin-bottom: 2px; }
+    .edu-grid .card { padding: 12px; }
+    .edu-grid .card img[src="ENFJ图片.jpg"] { border-radius: 8px; }
+
+    /* 感谢页 */
+    .thanks-section { padding: 60px 0; min-height: 70vh; }
+    .thanks-title { font-size: 34px; margin-bottom: 12px; }
+    .thanks-sub { font-size: 16px; margin-bottom: 18px; }
+    .thanks-line { width: 48px; height: 2px; margin-bottom: 24px; }
+    .thanks-contact { font-size: 12px; }
+
+    /* 灯箱 - 手机安全区适配 */
+    .lightbox { padding: 20px; padding-top: calc(20px + env(safe-area-inset-top)); padding-bottom: calc(20px + env(safe-area-inset-bottom)); padding-left: calc(12px + env(safe-area-inset-left)); padding-right: calc(12px + env(safe-area-inset-right)); }
+    .lightbox img { max-width: 92vw; max-height: 82vh; border-radius: 8px; }
+    .lightbox-close { top: calc(16px + env(safe-area-inset-top)); right: calc(16px + env(safe-area-inset-right)); width: 38px; height: 38px; font-size: 18px; }
+    .lightbox-hint { font-size: 11px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 90%; text-align: center; }
+  }
+
+  /* ===== 超窄屏（≤380px iPhone SE 小屏） 补位 ===== */
+  @media (max-width: 380px) {
+    .hero-name { font-size: 26px; }
+    .hero-photo { width: 92px; height: 118px; }
+    .toc-grid { gap: 16px; }
+    .toc-item { padding: 10px 10px; }
+    .toc-num { font-size: 18px; }
+    .toc-text { font-size: 12px; }
+    .cp-img { height: 150px !important; }
   }
 </style>
 </head>
