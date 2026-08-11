@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈圆圆 - 资深头部策划</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --blue: #3B82F6;
+    --text: #1F2937;
+    --text-light: #6B7280;
+    --red: #EF4444;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  body {
+    font-family: -apple-system, "PingFang SC", "Source Han Sans CN", "Microsoft YaHei", sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: linear-gradient(135deg, #FAE37C 0%, #C1E9D2 50%, #5D9BFC 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 60px 0; position: relative; }
+  .section-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+  .section-num { color: var(--blue); font-size: 36px; }
+  .section-subtitle { color: var(--text-light); font-size: 14px; margin-bottom: 32px; }
+  .card { background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-radius: 16px; padding: 24px; box-shadow: var(--card-shadow); }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 60px 0; }
+  .hero-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+  .hero-name { font-size: 56px; font-weight: 800; letter-spacing: 4px; margin-bottom: 8px; }
+  .hero-role { font-size: 20px; color: var(--text-light); margin-bottom: 16px; }
+  .hero-contact { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
+  .hero-tagline { font-size: 16px; font-weight: 600; margin-bottom: 32px; }
+  .hero-tagline .highlight { color: var(--red); }
+  .hero-photo { width: 140px; height: 180px; border-radius: 12px; object-fit: cover; border: 3px dashed rgba(255,255,255,0.8); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  .stat-card { background: rgba(255,255,255,0.9); border-radius: 16px; padding: 20px 16px; text-align: center; box-shadow: var(--card-shadow); }
+  .stat-icon { font-size: 20px; margin-bottom: 8px; }
+  .stat-num { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1.2; }
+  .stat-label { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+  .tags { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.85); border-radius: 100px; padding: 10px 28px; font-size: 14px; font-weight: 500; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .toc-section { text-align: center; padding: 80px 0; }
+  .toc-label { font-size: 12px; letter-spacing: 4px; color: var(--text-light); margin-bottom: 12px; }
+  .toc-title { font-size: 28px; font-weight: 700; margin-bottom: 48px; }
+  .toc-grid { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .toc-item { text-align: center; }
+  .toc-num { font-size: 24px; font-weight: 700; color: var(--blue); }
+  .toc-text { font-size: 16px; color: var(--text); margin-top: 4px; }
+  .period-label { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--blue); margin-bottom: 20px; }
+  .period-label::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .work-card { background: rgba(255,255,255,0.92); border-radius: 12px; padding: 20px; box-shadow: var(--card-shadow); }
+  .work-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .work-logo { width: 32px; height: 32px; border-radius: 6px; object-fit: contain; background: #fff; }
+  .work-title { font-size: 15px; font-weight: 700; }
+  .work-meta { font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+  .work-desc { font-size: 13px; color: #4B5563; line-height: 1.7; }
+  .work-desc strong { color: var(--blue); }
+  .core-advantage { text-align: center; font-size: 13px; color: var(--text-light); margin-top: 16px; }
+  .core-advantage strong { color: #F59E0B; }
+  .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .project-card { background: rgba(255,255,255,0.92); border-radius: 12px; padding: 20px; box-shadow: var(--card-shadow); display: flex; gap: 16px; }
+  .project-text { flex: 1; }
+  .project-title { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+  .project-list { font-size: 13px; color: #4B5563; line-height: 1.8; }
+  .project-img { width: 120px; height: 160px; border-radius: 8px; object-fit: cover; flex-shrink: 0; border: 2px solid rgba(255,255,255,0.8); }
+  .core-project { margin-bottom: 48px; }
+  .core-project:last-child { margin-bottom: 0; }
+  .cp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .cp-title { font-size: 22px; font-weight: 700; }
+  .cp-badge { background: rgba(59,130,246,0.1); color: var(--blue); padding: 6px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+  .cp-images { display: flex; gap: 16px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap; align-items: flex-end; }
+  .cp-img { border-radius: 10px; border: 3px solid rgba(255,255,255,0.9); box-shadow: 0 4px 16px rgba(0,0,0,0.1); object-fit: cover; }
+  .cp-points { list-style: none; }
+  .cp-points li { font-size: 14px; color: #4B5563; line-height: 1.8; padding-left: 20px; position: relative; margin-bottom: 8px; }
+  .cp-points li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+  .cp-points li strong { color: var(--blue); }
+  .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .work-item { background: rgba(255,255,255,0.92); border-radius: 12px; padding: 20px; box-shadow: var(--card-shadow); }
+  .work-item-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 16px; }
+  .work-item-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .work-item-highlights { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .wh-tag { font-size: 12px; font-weight: 600; }
+  .wh-tag.fire { color: #F59E0B; }
+  .wh-tag.rocket { color: var(--blue); }
+  .wh-tag.gift { color: #10B981; }
+  .work-item-desc { font-size: 12px; color: var(--text-light); line-height: 1.7; }
+  .edu-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: start; }
+  .edu-info { background: rgba(255,255,255,0.92); border-radius: 12px; padding: 24px; box-shadow: var(--card-shadow); }
+  .edu-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 14px; }
+  .edu-icon { color: var(--blue); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .traits-label { font-size: 14px; font-weight: 600; color: var(--blue); margin: 20px 0 12px; }
+  .trait-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .trait-tag { background: rgba(255,255,255,0.8); border: 1px solid var(--blue); color: var(--blue); border-radius: 100px; padding: 6px 16px; font-size: 13px; font-weight: 500; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .skill-box { background: rgba(59,130,246,0.06); border-radius: 8px; padding: 12px; }
+  .skill-title { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
+  .skill-desc { font-size: 12px; color: var(--text-light); }
+  .edu-footer { grid-column: 1 / -1; text-align: center; font-size: 13px; color: var(--text-light); margin-top: 8px; }
+  .thanks-section { min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .thanks-title { font-size: 48px; font-weight: 800; margin-bottom: 16px; }
+  .thanks-sub { font-size: 20px; color: var(--blue); margin-bottom: 24px; }
+  .thanks-line { width: 60px; height: 3px; background: var(--blue); border-radius: 2px; margin-bottom: 32px; }
+  .thanks-contact { font-size: 14px; color: var(--text-light); }
+  html { scroll-behavior: smooth; }
+
+  /* ===== 图片悬停放大效果（柔和） ===== */
+  .hero-photo,
+  .project-img,
+  .cp-img,
+  .work-item-img {
+    transition: transform .4s cubic-bezier(.22,.9,.32,1.15), box-shadow .4s ease;
+    cursor: zoom-in;
+    will-change: transform;
+  }
+  .hero-photo:hover { transform: scale(1.08); box-shadow: 0 12px 36px rgba(0,0,0,0.18); }
+  .project-img:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,0.15); }
+  .cp-img:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+  .work-item-img:hover { transform: scale(1.08); box-shadow: 0 10px 26px rgba(0,0,0,0.14); }
+  .edu-grid .card img[src="ENFJ图片.jpg"] {
+    transition: transform .4s cubic-bezier(.22,.9,.32,1.15), box-shadow .4s ease;
+    cursor: zoom-in;
+    will-change: transform;
+  }
+  .edu-grid .card img[src="ENFJ图片.jpg"]:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,0.15); }
+
+  /* 卡片裁切，避免放大溢出圆角 */
+  .project-card, .work-item { overflow: hidden; }
+
+  /* ===== 点击灯箱（全屏预览） ===== */
+  .lightbox {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 99999;
+    display: none; align-items: center; justify-content: center;
+    padding: 32px; cursor: zoom-out; backdrop-filter: blur(6px);
+    animation: lbFadeIn .25s ease;
+  }
+  .lightbox.show { display: flex; }
+  .lightbox img {
+    max-width: 85vw; max-height: 85vh;
+    border-radius: 12px; box-shadow: 0 24px 72px rgba(0,0,0,0.6);
+    object-fit: contain; cursor: default;
+    animation: lbPop .35s cubic-bezier(.22,.9,.32,1.25);
+  }
+  .lightbox-close {
+    position: absolute; top: 24px; right: 28px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.14); color: #fff; font-size: 22px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border: none; transition: background .2s;
+    font-family: inherit; line-height: 1;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.28); }
+  .lightbox-hint {
+    position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.65); font-size: 13px; letter-spacing: 1px;
+  }
+  @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes lbPop { from { transform: scale(.86); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  .toc-item { cursor: pointer; transition: all 0.3s ease; padding: 16px 20px; border-radius: 12px; text-decoration: none; display: block; }
+  .toc-item:hover { background: rgba(59,130,246,0.1); transform: translateY(-4px); }
+  .toc-item:hover .toc-num { color: var(--red); }
+  .toc-item.active { background: rgba(59,130,246,0.15); box-shadow: 0 4px 12px rgba(59,130,246,0.15); }
+  .toc-item.active .toc-num { color: var(--red); }
+  @media (max-width: 768px) {
+    .hero-name { font-size: 36px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .work-grid, .project-grid, .edu-grid { grid-template-columns: 1fr; }
+    .works-grid { grid-template-columns: 1fr; }
+    .hero-top { flex-direction: column-reverse; gap: 24px; }
+    .hero-photo { width: 120px; height: 150px; }
+    .toc-grid { gap: 24px; }
+    .project-card { flex-direction: column; }
+    .project-img { width: 100%; height: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-top">
+      <div>
+        <h1 class="hero-name">陈圆圆</h1>
+        <p class="hero-role">资深头部策划</p>
+        <p class="hero-contact">13216110701 &nbsp;|&nbsp; 173887856@qq.com</p>
+        <p class="hero-tagline">
+          <span class="highlight">7年</span>活动策划与执行 | 4年<span class="highlight">深耕</span>直播大场"二把手" | 独立交付百万级S级项目
+        </p>
+      </div>
+      <img class="hero-photo" src="https://aka.doubaocdn.com/s/n4EUeLX66G" alt="陈圆圆">
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📊</div>
+        <div class="stat-num">2亿+</div>
+        <div class="stat-label">单场直播GMV<br>贾乃亮直播大促节点全案策划</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🔥</div>
+        <div class="stat-num">6000万+</div>
+        <div class="stat-label">抖音话题热度<br>#100个抖音时尚博主的冰川大秀</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-num">0→1</div>
+        <div class="stat-label">团队建设能力<br>搭建专业直播PGC内容团队，建立标准化SOP</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div class="stat-num">7万+</div>
+        <div class="stat-label">低成本高转化<br>0预算达成活动页面GMS突破</div>
+      </div>
+    </div>
+    <div style="text-align:center; font-size:14px; font-weight:600; margin-bottom:16px;">能力标签</div>
+    <div class="tags">
+      <span class="tag">达人/品牌 IP内容规划</span>
+      <span class="tag">明星进直播间1小时RD</span>
+      <span class="tag">短视频内容策划</span>
+    </div>
+  </div>
+</section>
+
+<section class="toc-section">
+  <div class="container">
+    <div class="toc-label">CONTENTS</div>
+    <h2 class="toc-title">目录</h2>
+    <div class="toc-grid">
+      <a href="#section-01" class="toc-item" data-target="section-01"><div class="toc-num">01</div><div class="toc-text">工作经历</div></a>
+      <a href="#section-02" class="toc-item" data-target="section-02"><div class="toc-num">02</div><div class="toc-text">项目经验</div></a>
+      <a href="#section-03" class="toc-item" data-target="section-03"><div class="toc-num">03</div><div class="toc-text">核心项目阐述</div></a>
+      <a href="#section-04" class="toc-item" data-target="section-04"><div class="toc-num">04</div><div class="toc-text">自驱作品</div></a>
+      <a href="#section-05" class="toc-item" data-target="section-05"><div class="toc-num">05</div><div class="toc-text">教育与底色</div></a>
+    </div>
+  </div>
+</section>
+
+<section id="section-01">
+  <div class="container">
+    <h2 class="section-title"><span class="section-num">01</span> 工作经历</h2>
+    <p class="section-subtitle">覆盖头部MCN、头部电商、文旅政企及互联网大厂全赛道，积累从一线执行到战略规划的多元实战经验。</p>
+
+    <div class="period-label">直播策划与执行（核心赛道·项目统筹） 2022.04 - 至今</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-header">
+          <img class="work-logo" src="https://aka.doubaocdn.com/s/o9gqGLVnCb" alt="抖音">
+          <div class="work-title">抖音超S级项目 ｜ 主策划（Freelancer）</div>
+        </div>
+        <div class="work-meta">2025.02 - 至今 &nbsp;|&nbsp; 短视频/直播全案统筹</div>
+        <div class="work-desc">竞标拿下<strong>"头排看秀·你好港风"</strong>等超S级项目，统筹全案策划、跨界资源整合与现场总执行，实现品牌曝光破亿与商业转化的品效合一。</div>
+      </div>
+      <div class="work-card">
+        <div class="work-header">
+          <img class="work-logo" src="https://aka.doubaocdn.com/s/h2l6s1R1QH" alt="湖州文旅">
+          <div class="work-title">湖州文旅 ｜ 城市级跨年活动主策划</div>
+        </div>
+        <div class="work-meta">2025.01 - 2025.02 &nbsp;|&nbsp; 文旅项目全案落地</div>
+        <div class="work-desc">策划落地城市级跨年光影秀、文旅IP、沉浸式置景、艺人统筹与千人现场执行，<strong>单日吸引游客超5万人次</strong>，引爆本地社交话题。</div>
+      </div>
+      <div class="work-card">
+        <div class="work-header">
+          <img class="work-logo" src="https://aka.doubaocdn.com/s/shU9ZMgY4C" alt="辛选">
+          <div class="work-title">辛选集团·赵梦澈子公司 ｜ PGC内容组长</div>
+        </div>
+        <div class="work-meta">2024.03 - 2024.07 &nbsp;|&nbsp; 团队搭建与体系化建设</div>
+        <div class="work-desc">从0到1搭建15人PGC内容团队，建立选题/脚本/拍摄/SOP；主导618大促全案，优化直播间视觉，助力<strong>单场直播GMV突破8000万</strong>。</div>
+      </div>
+      <div class="work-card">
+        <div class="work-header">
+          <img class="work-logo" src="遥望logo.jpg" alt="遥望">
+          <div class="work-title">遥望网络·贾乃亮团队 ｜ 资深直播策划</div>
+        </div>
+        <div class="work-meta">2022.04 - 2023.06 &nbsp;|&nbsp; 明星大促全案</div>
+        <div class="work-desc">独立统筹明星S级大促全案，负责嘉宾1v1对接与脚本设计；<strong>单场在线峰值65.8万，618三场GMV破3.42亿，ROI超1:4.5</strong>。</div>
+      </div>
+    </div>
+
+    <div class="period-label">平台与用户运营（能力基石·增长实战） 2020.02 - 2022.03</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-header">
+          <img class="work-logo" src="https://aka.doubaocdn.com/s/RUUcNroJ5g" alt="微拍堂">
+          <div class="work-title">微拍堂 ｜ 电商资深活动运营</div>
+        </div>
+        <div class="work-meta">2021.04 - 2022.03</div>
+        <div class="work-desc">统筹全类目S级大促，<strong>0预算打造爆品</strong>（非遗单品实现百万GMV）；从0到1创建特色内容频道，内容种草转化率提升至65%，带动月销增长40%。</div>
+      </div>
+      <div class="work-card">
+        <div class="work-header">
+          <img class="work-logo" src="https://aka.doubaocdn.com/s/d7VzhaRDjW" alt="游卡桌游">
+          <div class="work-title">游卡桌游·剧本杀APP ｜ 平台活动运营</div>
+        </div>
+        <div class="work-meta">2020.02 - 2021.03</div>
+        <div class="work-desc">设计"邀请裂变+剧本盲盒"活动实现<strong>月增18万新用户</strong>；孵化官方自媒体矩阵，沉淀私域社群50万+，用户留存率提升25%，促活效果显著。</div>
+      </div>
+    </div>
+
+    <div class="period-label">早期经历（社会化训练）</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-header">
+          <img class="work-logo" src="https://aka.doubaocdn.com/s/t0Tgwkw0Ko" alt="闲鱼">
+          <div class="work-title">阿里巴巴·闲鱼APP ｜ 潮玩社区运营（实习）</div>
+        </div>
+        <div class="work-meta">2019.10 - 2020.01 &nbsp;|&nbsp; 杭州·阿里巴巴西溪园区</div>
+        <div class="work-desc">独立策划「潮玩手办市集」社区活动，定向扶持垂类KOL产出优质内容，活动期互动数据环比增长148%，成功激活垂类圈层活跃度，为社区沉淀了首批高粘性核心用户，探索出UGC内容冷启动的有效路径。</div>
+      </div>
+      <div class="work-card">
+        <div class="work-header">
+          <img class="work-logo" src="https://aka.doubaocdn.com/s/VpjpVq1P3M" alt="星巴克">
+          <div class="work-title">星巴克 ｜ 值班经理（大学兼职）</div>
+        </div>
+        <div class="work-meta">2017.03 - 2019.08 &nbsp;|&nbsp; 南京·新街口金鹰店</div>
+        <div class="work-desc">在高频高压的服务场景中，锻炼了多线程任务协调与临场应变能力；通过精准的用户需求洞察与话术优化，创下班8小时面销50张高客单星礼卡的门店记录，带动时段业绩达成率提升至220%，积累了扎实的一线服务与销售转化经验。</div>
+      </div>
+    </div>
+
+    <p class="core-advantage">💡 <strong>核心优势：</strong>兼具"内容创意策划力"与"商业落地执行力"，擅长以用户视角驱动增长，快速适配多赛道项目需求。</p>
+  </div>
+</section>
+
+<section id="section-02">
+  <div class="container">
+    <h2 class="section-title"><span class="section-num">02</span> 项目经验</h2>
+    <p class="section-subtitle">操盘GMV超千万级项目30+场，横跨线上直播大场、线下文旅事件与品牌营销种草，具备从策略到落地的全案闭环能力。</p>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-text">
+          <div class="project-title">直播项目</div>
+          <div class="project-list">
+            • <strong>大场：</strong>抖音头排看秀·港风篇｜yoyo冰川大秀｜贾乃亮年度亮品20场+｜赵梦澈龙年首战<br>
+            • <strong>专场：</strong>毒角show麦当劳专场｜小五立白专场｜徐梦洁&本来修容裤｜杨迪&奶酪博士｜海清&韩束｜杨超越&畅优酸奶……
+          </div>
+        </div>
+        <img class="project-img" src="https://aka.doubaocdn.com/s/UWEkFsiFvb" alt="双11直播">
+      </div>
+      <div class="project-card">
+        <div class="project-text">
+          <div class="project-title">营销种草项目</div>
+          <div class="project-list">
+            • 薇娅双十一小红书内容推广｜书亦烧仙草产品种草｜巧虎扭扭车产品种草｜高小小短视频内容规划
+          </div>
+        </div>
+        <img class="project-img" src="https://aka.doubaocdn.com/s/5tnbeVljDL" alt="书亦烧仙草">
+      </div>
+      <div class="project-card">
+        <div class="project-text">
+          <div class="project-title">文旅项目</div>
+          <div class="project-list">
+            • 湖州爱山25跨年活动｜江南学社研讨会｜Citywalk小西街｜赵孟頫项王公园置景创意
+          </div>
+        </div>
+        <img class="project-img" src="https://aka.doubaocdn.com/s/DYwVd8NLEl" alt="SHINE音乐狂欢夜">
+      </div>
+      <div class="project-card">
+        <div class="project-text">
+          <div class="project-title">平台外链合作项目</div>
+          <div class="project-list">
+            • 飞火电竞酒店合作｜冬奥会纪念币活动｜央视网助农溯源｜AI短剧调研与规划
+          </div>
+        </div>
+        <img class="project-img" src="https://aka.doubaocdn.com/s/3muh2M236S" alt="麦当劳专场">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="section-03">
+  <div class="container">
+    <h2 class="section-title"><span class="section-num">03</span> 核心项目阐述</h2>
+
+    <div class="core-project">
+      <div class="cp-header">
+        <h3 class="cp-title">抖音「头排看秀·你好港风」</h3>
+        <span class="cp-badge">事件策划力</span>
+      </div>
+      <div class="cp-images">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/L79KkRL82c" style="height:240px; width:auto;" alt="港风大秀海报">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/qI7zqJ9SkY" style="height:240px; width:auto;" alt="W.Diva置景">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/clRncBYcnB" style="height:240px; width:auto;" alt="带货榜第1">
+      </div>
+      <ul class="cp-points">
+        <li><strong>竞标突围：</strong>面对蕉下、波司登等头部品牌的激烈竞逐，凭借极具差异化的创意策划方案成功拿下超S级独家合作权。</li>
+        <li><strong>多方统筹：</strong>协调抖音平台、品牌方与运营团队三方需求，化解博弈矛盾，高效调度资源并强力推动全流程进度落地。</li>
+        <li><strong>全案操盘：</strong>从策划方案、流程Rundown设计、置景创意、明星互动玩法到现场场控，实现活动全链路闭环管理。</li>
+        <li><strong>品效双收：</strong>单场GMV突破<strong>3000万+</strong>，助力达人完成升咖并荣获"年度影响力红人奖"，全网累计曝光量超<strong>1.3亿+</strong>。</li>
+      </ul>
+    </div>
+
+    <div class="core-project">
+      <div class="cp-header">
+        <h3 class="cp-title">贾乃亮「年度亮品」20+场品牌专场</h3>
+        <span class="cp-badge">商业转化力</span>
+      </div>
+      <div class="cp-images">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/kkR9LTNan1" style="height:220px; width:auto;" alt="618海报">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/wbkQSB8hZU" style="height:220px; width:auto;" alt="GMV数据">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/1J0nFrujB0" style="height:220px; width:auto;" alt="直播截图">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/BsOrdlQAD7" style="height:220px; width:auto;" alt="团队合照">
+      </div>
+      <ul class="cp-points">
+        <li><strong>战绩突破：</strong>618期间三场直播累计GMV突破3.42亿，单场在线观看峰值达65.8万，创该品类年度直播成交新高，各项核心指标远超行业平均水平。</li>
+        <li><strong>模型沉淀：</strong>打造可规模化复制的S级大促操盘模型，从主策开场强势拉线、视觉动线引导转化，到全网话题预埋与破圈传播，实现流量到销量的高效闭环。</li>
+        <li><strong>创新运营：</strong>联动私域社群进行分阶段蓄水，上线「集亮点兑豪礼」福利机制提升用户留存，引入明星嘉宾1小时综艺化互动（RD）环节，大幅拉升直播间停留时长与互动率。</li>
+      </ul>
+    </div>
+
+    <div class="core-project">
+      <div class="cp-header">
+        <h3 class="cp-title">书亦烧仙草营销种草 / 薇娅双11小红书推广 / 巧虎扭扭车抖音种草</h3>
+        <span class="cp-badge">品牌策略力</span>
+      </div>
+      <div class="cp-images">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/zE8kGNhjF6" style="height:240px; width:auto;" alt="书亦烧仙草">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/ewUCf4ei3G" style="height:240px; width:auto;" alt="薇娅双11">
+        <img class="cp-img" src="https://aka.doubaocdn.com/s/AHTatpuW6N" style="height:240px; width:auto;" alt="巧虎扭扭车">
+      </div>
+      <ul class="cp-points">
+        <li><strong>全案策略深度定制：</strong>联合4A团队共创，输出从种草策略、内容SOP到投放节奏的全链路方案，配套精细化逐字脚本，确保执行层的专业度与连贯性。</li>
+        <li><strong>打造强记忆点事件营销：</strong>跳出单纯流量思维，站在品牌资产沉淀的高度策划"有事件感"的产品种草内容，结合双11大促势能制造话题，强化用户心智占领。</li>
+        <li><strong>精准匹配与C端转化驱动：</strong>精选高契合度头部主播与垂类达人，紧扣C端消费痛点，融合实时热点热梗打造爆款内容，实现公域流量到电商销量的高效转化闭环。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="section-04">
+  <div class="container">
+    <h2 class="section-title"><span class="section-num">04</span> 自驱作品</h2>
+    <div class="works-grid">
+      <div class="work-item">
+        <img class="work-item-img" src="https://aka.doubaocdn.com/s/BmFKeVm4Cw" alt="抖音账号">
+        <div class="work-item-title">@圆子圆子不要生气 ｜ 短视频</div>
+        <div class="work-item-highlights">
+          <span class="wh-tag rocket">🚀 独立运营·从0到1冷启动</span>
+          <span class="wh-tag fire">🔥 单条播放550w+｜点赞8.6w+</span>
+        </div>
+        <div class="work-item-desc">0基础起号，验证内容定位与爆款逻辑，独立完成选题、脚本、拍摄、剪辑及发布；产出单条视频播放量550w+、点赞8.6w+的爆款，展现了独立的内容策划与网感。</div>
+      </div>
+      <div class="work-item">
+        <img class="work-item-img" src="张张表情包图片.jpg" alt="微信表情">
+        <div class="work-item-title">原创微信表情 · 可爱小张张系列</div>
+        <div class="work-item-highlights">
+          <span class="wh-tag rocket">🚀 独立美术设计·全平台运营</span>
+          <span class="wh-tag gift">🎁 总发送量3亿+｜变现3k+</span>
+        </div>
+        <div class="work-item-desc">独立创作并发布原创表情包《可爱小张张》三弹，凭借对大众情绪的洞察和创意表达，总发送量突破3亿，远超同期竞品，并获得变现3k+。</div>
+      </div>
+      <div class="work-item">
+        <img class="work-item-img" src="https://aka.doubaocdn.com/s/XXIiyQUMpn" alt="杀糕局">
+        <div class="work-item-title">线下创意IP ·「杀糕局」主题社交</div>
+        <div class="work-item-highlights">
+          <span class="wh-tag rocket">🚀 发起人·社群策划与现场控场</span>
+          <span class="wh-tag gift">🤝 转介绍率超80%｜零成本获客</span>
+        </div>
+        <div class="work-item-desc">洞察年轻人社交需求，自主发起主题聚会，负责策划、招募与现场主持，验证了从线上招募到线下裂变的轻量社群模式，沉淀UGC内容，转介绍率超80%。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="section-05">
+  <div class="container">
+    <h2 class="section-title"><span class="section-num">05</span> 教育与底色</h2>
+    <div class="edu-grid">
+      <div>
+        <div class="edu-info">
+          <div class="edu-row">
+            <span class="edu-icon">🎓</span>
+            <span><strong>浙江工商大学</strong>｜工商管理 本科（2020届），主修市场营销与管理学</span>
+          </div>
+          <div class="edu-row">
+            <span class="edu-icon">📜</span>
+            <span>持有英语CET-6、房地产经纪人协理资格证、茶艺师（初级）认证</span>
+          </div>
+          <div class="edu-row">
+            <span class="edu-icon">🧑</span>
+            <span>性格底色：<strong>ENFJ主人公型人格</strong>，善于共情、统筹协调与资源整合</span>
+          </div>
+          <div class="traits-label">个人差异化特质</div>
+          <div class="trait-tags">
+            <span class="trait-tag">热点敏感</span>
+            <span class="trait-tag">全域统筹</span>
+            <span class="trait-tag">结果极致</span>
+            <span class="trait-tag">强Owner意识</span>
+          </div>
+          <div class="skills-grid">
+            <div class="skill-box">
+              <div class="skill-title">📋 策划力</div>
+              <div class="skill-desc">直播脚本撰写、活动创意策划、选品逻辑构建与节奏卡点把控</div>
+            </div>
+            <div class="skill-box">
+              <div class="skill-title">📊 数据与工具</div>
+              <div class="skill-desc">熟练运用巨量百应、蝉妈妈、飞瓜数据分析，擅长Excel复盘与飞书协同</div>
+            </div>
+            <div class="skill-box">
+              <div class="skill-title">🎬 内容创作</div>
+              <div class="skill-desc">短视频脚本策划、剪映视频剪辑实操、稿定设计等物料制作</div>
+            </div>
+            <div class="skill-box">
+              <div class="skill-title">🤝 软技能</div>
+              <div class="skill-desc">跨部门高效沟通协作、高压环境下的直播控场与团队激励</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="align-self:start; display:flex; justify-content:center;">
+        <div class="card" style="padding:16px; max-width:280px; width:100%;">
+          <img src="ENFJ图片.jpg" alt="ENFJ人生说明书" style="width:100%; border-radius:8px; display:block;">
+        </div>
+      </div>
+      <div class="edu-footer">
+        💡 <strong>核心优势：</strong>兼具理性的逻辑策划与感性的共情沟通，能够快速理解业务需求并转化为可执行的方案。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="thanks-section">
+  <div class="container">
+    <h2 class="thanks-title">感谢观看</h2>
+    <p class="thanks-sub">期待与您共事</p>
+    <div class="thanks-line"></div>
+    <p class="thanks-contact">陈圆圆 &nbsp;|&nbsp; 13216110701 &nbsp;|&nbsp; 173887856@qq.com</p>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.toc-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('data-target');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        const offset = targetEl.getBoundingClientRect().top + window.pageYOffset - 20;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    });
+  });
+  const tocItems = document.querySelectorAll('.toc-item');
+  const sections = ['section-01','section-02','section-03','section-04','section-05'];
+  function highlightToc() {
+    const scrollPos = window.pageYOffset + window.innerHeight / 3;
+    let currentIdx = -1;
+    sections.forEach((id, idx) => {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollPos) currentIdx = idx;
+    });
+    tocItems.forEach((el, idx) => el.classList.toggle('active', idx === currentIdx));
+  }
+  window.addEventListener('scroll', highlightToc);
+  highlightToc();
+
+  /* ===== 点击图片 → 全屏灯箱预览 ===== */
+  (function initLightbox() {
+    // 1. 创建灯箱DOM
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.setAttribute('role', 'dialog');
+    lb.innerHTML = `
+      <button class="lightbox-close" aria-label="关闭预览">✕</button>
+      <img src="" alt="预览大图">
+      <div class="lightbox-hint">点击空白处 / 按 ESC 键 / 点右上角 ✕ 关闭</div>
+    `;
+    document.body.appendChild(lb);
+    const lbImg = lb.querySelector('img');
+    const lbClose = lb.querySelector('.lightbox-close');
+
+    function openBox(src) {
+      lbImg.src = src;
+      lb.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeBox() {
+      lb.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    // 2. 绑定所有「主要图片」的点击打开事件（不含 tiny logo）
+    const targetImgs = document.querySelectorAll(
+      '.hero-photo, .project-img, .cp-img, .work-item-img, .edu-grid .card img'
+    );
+    targetImgs.forEach(function(img) {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function() {
+        openBox(this.getAttribute('src'));
+      });
+    });
+
+    // 3. 关闭：点遮罩 / 点关闭按钮 / ESC键
+    lb.addEventListener('click', function(e) {
+      if (e.target === lb || e.target === lbClose) closeBox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lb.classList.contains('show')) closeBox();
+    });
+  })();
+</script>
+</body>
+</html>
