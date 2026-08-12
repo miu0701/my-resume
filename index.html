@@ -19,6 +19,7 @@
     --text: #1F2937;
     --text-light: #6B7280;
     --red: #EF4444;
+    --card-bg: rgba(255,255,255,0.92);
     --card-shadow: 0 4px 24px rgba(0,0,0,0.06);
   }
   body {
@@ -55,21 +56,117 @@
   .section-num { color: var(--blue); font-size: 36px; }
   .section-subtitle { color: var(--text-light); font-size: 14px; margin-bottom: 32px; }
   .card { background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-radius: 16px; padding: 24px; box-shadow: var(--card-shadow); }
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 60px 0; }
-  .hero-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
-  .hero-name { font-size: 56px; font-weight: 800; letter-spacing: 4px; margin-bottom: 8px; }
-  .hero-role { font-size: 20px; color: var(--text-light); margin-bottom: 16px; }
-  .hero-contact { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
-  .hero-tagline { font-size: 16px; font-weight: 600; margin-bottom: 32px; }
+  /* ========== 封面 ========== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 0 60px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-header {
+    margin-bottom: 28px;
+  }
+
+  .hero-name {
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  .hero-role {
+    font-size: 20px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .hero-contact {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 0;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-contact a {
+    color: var(--text-light);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .hero-contact a:hover { color: var(--blue); }
+
+  .hero-tagline {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 24px 0 20px;
+    max-width: 600px;
+  }
+
   .hero-tagline .highlight { color: var(--red); }
-  .hero-photo { width: 140px; height: 180px; border-radius: 12px; object-fit: cover; border: 3px dashed rgba(255,255,255,0.8); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
-  .stat-card { background: rgba(255,255,255,0.9); border-radius: 16px; padding: 20px 16px; text-align: center; box-shadow: var(--card-shadow); }
-  .stat-icon { font-size: 20px; margin-bottom: 8px; }
-  .stat-num { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1.2; }
-  .stat-label { font-size: 12px; color: var(--text-light); margin-top: 4px; }
-  .tags { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .tag { background: rgba(255,255,255,0.85); border-radius: 100px; padding: 10px 28px; font-size: 14px; font-weight: 500; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+
+  .hero-photo {
+    width: 180px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 4px solid rgba(255,255,255,0.9);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    flex-shrink: 0;
+  }
+
+  .tags {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-bottom: 28px;
+  }
+
+  .tag {
+    background: var(--card-bg);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: var(--card-shadow);
+    white-space: nowrap;
+    flex-shrink: 1;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 0;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stat-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 16px 12px;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.25s, background 0.3s;
+  }
+
+  .stat-card:hover { transform: translateY(-4px); }
+
+  .stat-icon { font-size: 18px; margin-bottom: 6px; }
+  .stat-num { font-size: 26px; font-weight: 800; color: var(--blue); line-height: 1.2; }
+  .stat-label { font-size: 11px; color: var(--text-light); margin-top: 4px; line-height: 1.5; }
   .toc-section { text-align: center; padding: 80px 0; }
   .toc-label { font-size: 12px; letter-spacing: 4px; color: var(--text-light); margin-bottom: 12px; }
   .toc-title { font-size: 28px; font-weight: 700; margin-bottom: 48px; }
@@ -148,12 +245,12 @@
   .project-img:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,0.15); }
   .cp-img:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
   .work-item-img:hover { transform: scale(1.08); box-shadow: 0 10px 26px rgba(0,0,0,0.14); }
-  .edu-grid .card img[src="ENFJ图片.jpg"] {
+  .edu-grid .card img[src="images/ENFJ图片.jpg"] {
     transition: transform .4s cubic-bezier(.22,.9,.32,1.15), box-shadow .4s ease;
     cursor: zoom-in;
     will-change: transform;
   }
-  .edu-grid .card img[src="ENFJ图片.jpg"]:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,0.15); }
+  .edu-grid .card img[src="images/ENFJ图片.jpg"]:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,0.15); }
 
   /* 卡片裁切，避免放大溢出圆角 */
   .project-card, .work-item { overflow: hidden; }
@@ -188,18 +285,144 @@
   @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes lbPop { from { transform: scale(.86); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-  .toc-item { cursor: pointer; transition: all 0.3s ease; padding: 16px 20px; border-radius: 12px; text-decoration: none; display: block; }
-  .toc-item:hover { background: rgba(59,130,246,0.1); transform: translateY(-4px); }
+  .toc-item {
+    cursor: pointer; transition: all 0.3s ease;
+    padding: 16px 20px; border-radius: 12px; text-decoration: none; display: block;
+    /* ===== 新增：暗底浅卡片，视觉上明显能点击 ===== */
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 1px solid rgba(255,255,255,0.6);
+    min-width: 128px;
+  }
+  .toc-item:hover { background: #fff; transform: translateY(-4px); box-shadow: 0 10px 24px rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.25); }
   .toc-item:hover .toc-num { color: var(--red); }
-  .toc-item.active { background: rgba(59,130,246,0.15); box-shadow: 0 4px 12px rgba(59,130,246,0.15); }
-  .toc-item.active .toc-num { color: var(--red); }
-  @media (max-width: 768px) {
-    .hero-name { font-size: 36px; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .toc-item.active {
+    background: var(--blue); color: #fff; border-color: var(--blue);
+    box-shadow: 0 8px 20px rgba(59,130,246,0.35);
+  }
+  .toc-item.active .toc-num { color: #fff; }
+  .toc-item.active .toc-text { color: #fff; }
+
+  /* ========== 桌面端：右侧固定侧边栏（≥1200px 显示） ========== */
+  .side-nav {
+    position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+    z-index: 90; display: none; flex-direction: column; gap: 12px;
+  }
+  @media (min-width: 1200px) {
+    /* 大屏：sidebar 贴在 container 右侧外边缘 */
+    .side-nav { display: flex; right: calc(50vw - 480px - 24px - 200px); }
+  }
+  @media (min-width: 1500px) {
+    /* 超宽屏：sidebar 贴屏幕右边 40px，不太远 */
+    .side-nav { right: 40px; }
+  }
+  .s-nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px; border-radius: 12px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    cursor: pointer; text-decoration: none;
+    min-width: 180px; transition: all .28s cubic-bezier(.2,.9,.3,1.2);
+  }
+  .s-nav-item:hover { transform: translateX(-6px); box-shadow: 0 10px 28px rgba(59,130,246,0.14); background: #fff; }
+  .s-nav-item:hover .s-num { color: var(--red); }
+  .s-nav-item.active {
+    background: var(--blue); color: #fff; border-color: var(--blue);
+    box-shadow: 0 10px 26px rgba(59,130,246,0.4);
+  }
+  .s-nav-item.active .s-num, .s-nav-item.active .s-text { color: #fff; }
+  .s-num { font-size: 20px; font-weight: 700; color: var(--blue); min-width: 32px; }
+  .s-text { font-size: 15px; font-weight: 600; color: var(--text); }
+
+  /* ========== 移动端/小桌面：☰ 浮标按钮 + 右侧滑入抽屉（≤1199px 显示） ========== */
+  .m-nav-toggle {
+    display: none; position: fixed; z-index: 95;
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--blue); color: #fff; font-size: 22px; border: none;
+    box-shadow: 0 8px 24px rgba(59,130,246,0.5); cursor: pointer;
+    display: none; align-items: center; justify-content: center;
+    transition: transform .2s ease;
+  }
+  .m-nav-toggle:active { transform: scale(0.92); }
+  .m-nav-mask {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+    z-index: 92; opacity: 0; visibility: hidden; transition: all .28s ease;
+    backdrop-filter: blur(2px);
+  }
+  .m-nav-mask.show { opacity: 1; visibility: visible; }
+  .m-nav-drawer {
+    position: fixed; top: 0; right: 0; z-index: 93;
+    height: 100vh; width: 260px; max-width: 78vw;
+    background: rgba(255,255,255,0.98); backdrop-filter: blur(14px);
+    box-shadow: -12px 0 32px rgba(0,0,0,0.1);
+    padding: calc(56px + env(safe-area-inset-top)) 20px 24px;
+    transform: translateX(100%); transition: transform .32s cubic-bezier(.22,.9,.32,1);
+    overflow-y: auto;
+  }
+  .m-nav-drawer.show { transform: translateX(0); }
+  .m-nav-close {
+    position: absolute; top: calc(14px + env(safe-area-inset-top)); right: 14px;
+    width: 36px; height: 36px; border-radius: 50%; border: none;
+    background: rgba(0,0,0,0.06); font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; color: var(--text);
+  }
+  .m-nav-title { font-size: 13px; letter-spacing: 3px; color: var(--text-light); margin-bottom: 8px; }
+  .m-nav-head { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--blue); }
+  .m-nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 14px; border-radius: 10px; margin-bottom: 10px;
+    background: rgba(59,130,246,0.05); text-decoration: none;
+    transition: all .2s ease; cursor: pointer;
+  }
+  .m-nav-item:hover { background: rgba(59,130,246,0.12); }
+  .m-nav-item:active { transform: scale(0.98); }
+  .m-nav-item.active { background: var(--blue); }
+  .m-nav-item.active .m-num, .m-nav-item.active .m-text { color: #fff; }
+  .m-num { font-size: 18px; font-weight: 700; color: var(--blue); min-width: 28px; }
+  .m-text { font-size: 14px; font-weight: 600; color: var(--text); }
+
+  /* 1199px 以下：启用 ☰ 浮标，隐藏固定侧边栏 */
+  @media (max-width: 1199px) {
+    .side-nav { display: none !important; }
+    .m-nav-toggle { display: flex; }
+  }
+  /* 小屏手机：抽屉缩窄 */
+  @media (max-width: 480px) {
+    .m-nav-toggle { width: 48px; height: 48px; font-size: 20px; }
+    .m-nav-drawer { padding-top: calc(48px + env(safe-area-inset-top)); }
+    .m-nav-head { font-size: 20px; }
+  }
+  @media (max-width: 900px) {
+    .hero { padding-top: 80px; min-height: auto; }
+    .hero-header { margin-bottom: 20px; }
+
+    .hero-photo {
+      width: 140px;
+      height: auto;
+      border-radius: 10px;
+      border: 3px solid rgba(255,255,255,0.9);
+    }
+
+    .hero-name { font-size: 32px; letter-spacing: 2px; }
+    .hero-role { font-size: 16px; margin-bottom: 8px; }
+    .hero-contact { font-size: 12px; margin-bottom: 0; }
+    .hero-tagline { font-size: 14px; margin: 20px 0 16px; }
+
+    .tags { margin-bottom: 20px; gap: 8px; }
+    .tag { font-size: 11px; padding: 6px 12px; }
+
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 100%; }
+    .stat-num { font-size: 22px; }
+    .stat-card { padding: 14px 10px; }
+    .stat-label { font-size: 10px; }
+
     .work-grid, .project-grid, .edu-grid { grid-template-columns: 1fr; }
     .works-grid { grid-template-columns: 1fr; }
-    .hero-top { flex-direction: column-reverse; gap: 24px; }
-    .hero-photo { width: 120px; height: 150px; }
     .toc-grid { gap: 24px; }
     .project-card { flex-direction: column; }
     .project-img { width: 100%; height: 200px; }
@@ -213,17 +436,18 @@
 
     /* Hero 区域 */
     .hero { padding: 40px 0; }
-    .hero-name { font-size: 30px; letter-spacing: 2px; }
-    .hero-role { font-size: 16px; }
+    .hero-name { font-size: 28px; letter-spacing: 2px; }
+    .hero-role { font-size: 16px; margin-bottom: 8px; }
     .hero-contact { font-size: 12px; }
-    .hero-tagline { font-size: 14px; margin-bottom: 24px; }
-    .hero-photo { width: 104px; height: 132px; border-width: 2px; }
-    .stats-grid { gap: 10px; margin-bottom: 24px; }
-    .stat-card { padding: 14px 8px; border-radius: 12px; }
+    .hero-tagline { font-size: 13px; margin: 16px 0 12px; }
+    .hero-photo { width: 120px; height: auto; border-width: 3px; }
+    .stats-grid { gap: 8px; }
+    .stat-card { padding: 12px 8px; border-radius: 12px; }
     .stat-icon { font-size: 16px; margin-bottom: 4px; }
-    .stat-num { font-size: 22px; }
+    .stat-num { font-size: 20px; }
     .stat-label { font-size: 10px; line-height: 1.4; }
-    .tag { padding: 8px 18px; font-size: 12px; }
+    .tag { padding: 5px 10px; font-size: 10px; }
+    .tags { gap: 6px; }
 
     /* 目录 */
     .toc-section { padding: 56px 0; }
@@ -270,7 +494,7 @@
     .skill-box { padding: 10px; border-radius: 6px; }
     .skill-title { font-size: 12px; margin-bottom: 2px; }
     .edu-grid .card { padding: 12px; }
-    .edu-grid .card img[src="ENFJ图片.jpg"] { border-radius: 8px; }
+    .edu-grid .card img[src="images/ENFJ图片.jpg"] { border-radius: 8px; }
 
     /* 感谢页 */
     .thanks-section { padding: 60px 0; min-height: 70vh; }
@@ -288,8 +512,9 @@
 
   /* ===== 超窄屏（≤380px iPhone SE 小屏） 补位 ===== */
   @media (max-width: 380px) {
-    .hero-name { font-size: 26px; }
-    .hero-photo { width: 92px; height: 118px; }
+    .hero-name { font-size: 24px; }
+    .hero-photo { width: 100px; height: auto; }
+    .tag { padding: 4px 8px; font-size: 9px; }
     .toc-grid { gap: 16px; }
     .toc-item { padding: 10px 10px; }
     .toc-num { font-size: 18px; }
@@ -300,18 +525,24 @@
 </head>
 <body>
 
-<section class="hero">
+<section class="hero" id="hero">
   <div class="container">
-    <div class="hero-top">
-      <div>
-        <h1 class="hero-name">陈圆圆</h1>
-        <p class="hero-role">资深头部策划</p>
-        <p class="hero-contact">13216110701 &nbsp;|&nbsp; 173887856@qq.com</p>
-        <p class="hero-tagline">
-          <span class="highlight">7年</span>活动策划与执行 | 4年<span class="highlight">深耕</span>直播大场"二把手" | 独立交付百万级S级项目
-        </p>
-      </div>
-      <img class="hero-photo" src="https://aka.doubaocdn.com/s/n4EUeLX66G" alt="陈圆圆">
+    <div class="hero-header">
+      <h1 class="hero-name">陈圆圆</h1>
+      <p class="hero-role">资深头部策划</p>
+      <p class="hero-contact">
+        <a onclick="copyText('13216110701')">📱 13216110701</a>
+        <a onclick="copyText('173887856@qq.com')">✉️ 173887856@qq.com</a>
+      </p>
+    </div>
+    <img class="hero-photo" src="images/photo.jpg" alt="陈圆圆">
+    <p class="hero-tagline">
+      <span class="highlight">7年</span>活动策划与执行 | 4年<span class="highlight">深耕</span>直播大场"二把手" | 独立交付百万级S级项目
+    </p>
+    <div class="tags">
+      <span class="tag">达人/品牌 IP内容规划</span>
+      <span class="tag">明星进直播间1小时RD</span>
+      <span class="tag">短视频内容策划</span>
     </div>
     <div class="stats-grid">
       <div class="stat-card">
@@ -334,12 +565,6 @@
         <div class="stat-num">7万+</div>
         <div class="stat-label">低成本高转化<br>0预算达成活动页面GMS突破</div>
       </div>
-    </div>
-    <div style="text-align:center; font-size:14px; font-weight:600; margin-bottom:16px;">能力标签</div>
-    <div class="tags">
-      <span class="tag">达人/品牌 IP内容规划</span>
-      <span class="tag">明星进直播间1小时RD</span>
-      <span class="tag">短视频内容策划</span>
     </div>
   </div>
 </section>
@@ -367,7 +592,7 @@
     <div class="work-grid">
       <div class="work-card">
         <div class="work-header">
-          <img class="work-logo" src="https://aka.doubaocdn.com/s/o9gqGLVnCb" alt="抖音">
+          <img class="work-logo" src="images/logo-douyin.png" alt="抖音">
           <div class="work-title">抖音超S级项目 ｜ 主策划（Freelancer）</div>
         </div>
         <div class="work-meta">2025.02 - 至今 &nbsp;|&nbsp; 短视频/直播全案统筹</div>
@@ -375,23 +600,23 @@
       </div>
       <div class="work-card">
         <div class="work-header">
-          <img class="work-logo" src="https://aka.doubaocdn.com/s/h2l6s1R1QH" alt="湖州文旅">
+          <img class="work-logo" src="images/logo-huzhou.png" alt="湖州文旅">
           <div class="work-title">湖州文旅 ｜ 城市级跨年活动主策划</div>
         </div>
-        <div class="work-meta">2025.01 - 2025.02 &nbsp;|&nbsp; 文旅项目全案落地</div>
+        <div class="work-meta">2024.10 - 2025.01 &nbsp;|&nbsp; 文旅项目全案落地</div>
         <div class="work-desc">策划落地城市级跨年光影秀、文旅IP、沉浸式置景、艺人统筹与千人现场执行，<strong>单日吸引游客超5万人次</strong>，引爆本地社交话题。</div>
       </div>
       <div class="work-card">
         <div class="work-header">
-          <img class="work-logo" src="https://aka.doubaocdn.com/s/shU9ZMgY4C" alt="辛选">
+          <img class="work-logo" src="images/logo-xinxuan.png" alt="辛选">
           <div class="work-title">辛选集团·赵梦澈子公司 ｜ PGC内容组长</div>
         </div>
         <div class="work-meta">2024.03 - 2024.07 &nbsp;|&nbsp; 团队搭建与体系化建设</div>
-        <div class="work-desc">从0到1搭建15人PGC内容团队，建立选题/脚本/拍摄/SOP；主导618大促全案，优化直播间视觉，助力<strong>单场直播GMV突破8000万</strong>。</div>
+        <div class="work-desc">从0到1搭建5⼈PGC内容团队，建⽴IP规划-创意内容-执⾏搭建SOP，优化直播间视觉VI，提⾼产品种草转化。</div>
       </div>
       <div class="work-card">
         <div class="work-header">
-          <img class="work-logo" src="遥望logo.jpg" alt="遥望">
+          <img class="work-logo" src="images/logo-yaowang.jpg" alt="遥望">
           <div class="work-title">遥望网络·贾乃亮团队 ｜ 资深直播策划</div>
         </div>
         <div class="work-meta">2022.04 - 2023.06 &nbsp;|&nbsp; 明星大促全案</div>
@@ -403,19 +628,19 @@
     <div class="work-grid">
       <div class="work-card">
         <div class="work-header">
-          <img class="work-logo" src="https://aka.doubaocdn.com/s/RUUcNroJ5g" alt="微拍堂">
+          <img class="work-logo" src="images/logo-weipaitang.png" alt="微拍堂">
           <div class="work-title">微拍堂 ｜ 电商资深活动运营</div>
         </div>
         <div class="work-meta">2021.04 - 2022.03</div>
-        <div class="work-desc">统筹全类目S级大促，<strong>0预算打造爆品</strong>（非遗单品实现百万GMV）；从0到1创建特色内容频道，内容种草转化率提升至65%，带动月销增长40%。</div>
+        <div class="work-desc">统筹全类目S级大促，<strong>0预算打造纪念币爆品单sku一小时7万gms</strong>，从0到1创建特色内容频道，内容种草转化率提升至65%，带动月销增长40%。</div>
       </div>
       <div class="work-card">
         <div class="work-header">
-          <img class="work-logo" src="https://aka.doubaocdn.com/s/d7VzhaRDjW" alt="游卡桌游">
+          <img class="work-logo" src="images/logo-youka.png" alt="游卡桌游">
           <div class="work-title">游卡桌游·剧本杀APP ｜ 平台活动运营</div>
         </div>
         <div class="work-meta">2020.02 - 2021.03</div>
-        <div class="work-desc">设计"邀请裂变+剧本盲盒"活动实现<strong>月增18万新用户</strong>；孵化官方自媒体矩阵，沉淀私域社群50万+，用户留存率提升25%，促活效果显著。</div>
+        <div class="work-desc">设计"邀请裂变+剧本盲盒"活动实现<strong>月增3万新用户</strong>；孵化官方自媒体矩阵，沉淀私域社群1万+，用户留存率提升25%，促活效果显著。</div>
       </div>
     </div>
 
@@ -423,7 +648,7 @@
     <div class="work-grid">
       <div class="work-card">
         <div class="work-header">
-          <img class="work-logo" src="https://aka.doubaocdn.com/s/t0Tgwkw0Ko" alt="闲鱼">
+          <img class="work-logo" src="images/logo-xianyu.png" alt="闲鱼">
           <div class="work-title">阿里巴巴·闲鱼APP ｜ 潮玩社区运营（实习）</div>
         </div>
         <div class="work-meta">2019.10 - 2020.01 &nbsp;|&nbsp; 杭州·阿里巴巴西溪园区</div>
@@ -431,11 +656,11 @@
       </div>
       <div class="work-card">
         <div class="work-header">
-          <img class="work-logo" src="https://aka.doubaocdn.com/s/VpjpVq1P3M" alt="星巴克">
+          <img class="work-logo" src="images/logo-starbucks.png" alt="星巴克">
           <div class="work-title">星巴克 ｜ 值班经理（大学兼职）</div>
         </div>
-        <div class="work-meta">2017.03 - 2019.08 &nbsp;|&nbsp; 南京·新街口金鹰店</div>
-        <div class="work-desc">在高频高压的服务场景中，锻炼了多线程任务协调与临场应变能力；通过精准的用户需求洞察与话术优化，创下班8小时面销50张高客单星礼卡的门店记录，带动时段业绩达成率提升至220%，积累了扎实的一线服务与销售转化经验。</div>
+        <div class="work-meta">2017.09 - 2019.08 &nbsp;|&nbsp; 杭州·西溪印象城</div>
+        <div class="work-desc">在高频高压的服务场景中，锻炼了多线程任务协调与临场应变能力；通过精准的用户需求洞察与话术优化，创下<strong>单班次8小时面销50张</strong>高客单星礼卡的门店记录，带动时段业绩达成率提升至220%，积累了扎实的一线服务与销售转化经验。</div>
       </div>
     </div>
 
@@ -456,7 +681,7 @@
             • <strong>专场：</strong>毒角show麦当劳专场｜小五立白专场｜徐梦洁&本来修容裤｜杨迪&奶酪博士｜海清&韩束｜杨超越&畅优酸奶……
           </div>
         </div>
-        <img class="project-img" src="https://aka.doubaocdn.com/s/UWEkFsiFvb" alt="双11直播">
+        <img class="project-img" src="images/proj-live.jpg" alt="双11直播">
       </div>
       <div class="project-card">
         <div class="project-text">
@@ -465,7 +690,7 @@
             • 薇娅双十一小红书内容推广｜书亦烧仙草产品种草｜巧虎扭扭车产品种草｜高小小短视频内容规划
           </div>
         </div>
-        <img class="project-img" src="https://aka.doubaocdn.com/s/5tnbeVljDL" alt="书亦烧仙草">
+        <img class="project-img" src="images/proj-shuyi.jpg" alt="书亦烧仙草">
       </div>
       <div class="project-card">
         <div class="project-text">
@@ -474,7 +699,7 @@
             • 湖州爱山25跨年活动｜江南学社研讨会｜Citywalk小西街｜赵孟頫项王公园置景创意
           </div>
         </div>
-        <img class="project-img" src="https://aka.doubaocdn.com/s/DYwVd8NLEl" alt="SHINE音乐狂欢夜">
+        <img class="project-img" src="images/proj-shine.jpg" alt="SHINE音乐狂欢夜">
       </div>
       <div class="project-card">
         <div class="project-text">
@@ -483,7 +708,7 @@
             • 飞火电竞酒店合作｜冬奥会纪念币活动｜央视网助农溯源｜AI短剧调研与规划
           </div>
         </div>
-        <img class="project-img" src="https://aka.doubaocdn.com/s/3muh2M236S" alt="麦当劳专场">
+        <img class="project-img" src="images/proj-mcd.jpg" alt="麦当劳专场">
       </div>
     </div>
   </div>
@@ -499,9 +724,9 @@
         <span class="cp-badge">事件策划力</span>
       </div>
       <div class="cp-images">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/L79KkRL82c" style="height:240px; width:auto;" alt="港风大秀海报">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/qI7zqJ9SkY" style="height:240px; width:auto;" alt="W.Diva置景">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/clRncBYcnB" style="height:240px; width:auto;" alt="带货榜第1">
+        <img class="cp-img" src="images/cp1-poster.jpg" style="height:240px; width:auto;" alt="港风大秀海报">
+        <img class="cp-img" src="images/cp1-scene.jpg" style="height:240px; width:auto;" alt="W.Diva置景">
+        <img class="cp-img" src="images/cp1-rank.jpg" style="height:240px; width:auto;" alt="带货榜第1">
       </div>
       <ul class="cp-points">
         <li><strong>竞标突围：</strong>面对蕉下、波司登等头部品牌的激烈竞逐，凭借极具差异化的创意策划方案成功拿下超S级独家合作权。</li>
@@ -517,10 +742,10 @@
         <span class="cp-badge">商业转化力</span>
       </div>
       <div class="cp-images">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/kkR9LTNan1" style="height:220px; width:auto;" alt="618海报">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/wbkQSB8hZU" style="height:220px; width:auto;" alt="GMV数据">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/1J0nFrujB0" style="height:220px; width:auto;" alt="直播截图">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/BsOrdlQAD7" style="height:220px; width:auto;" alt="团队合照">
+        <img class="cp-img" src="images/cp2-poster.jpg" style="height:220px; width:auto;" alt="618海报">
+        <img class="cp-img" src="images/cp2-gmv.jpg" style="height:220px; width:auto;" alt="GMV数据">
+        <img class="cp-img" src="images/cp2-live.jpg" style="height:220px; width:auto;" alt="直播截图">
+        <img class="cp-img" src="images/cp2-team.jpg" style="height:220px; width:auto;" alt="团队合照">
       </div>
       <ul class="cp-points">
         <li><strong>战绩突破：</strong>618期间三场直播累计GMV突破3.42亿，单场在线观看峰值达65.8万，创该品类年度直播成交新高，各项核心指标远超行业平均水平。</li>
@@ -535,9 +760,9 @@
         <span class="cp-badge">品牌策略力</span>
       </div>
       <div class="cp-images">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/zE8kGNhjF6" style="height:240px; width:auto;" alt="书亦烧仙草">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/ewUCf4ei3G" style="height:240px; width:auto;" alt="薇娅双11">
-        <img class="cp-img" src="https://aka.doubaocdn.com/s/AHTatpuW6N" style="height:240px; width:auto;" alt="巧虎扭扭车">
+        <img class="cp-img" src="images/cp3-shuyi.jpg" style="height:240px; width:auto;" alt="书亦烧仙草">
+        <img class="cp-img" src="images/cp3-viya.jpg" style="height:240px; width:auto;" alt="薇娅双11">
+        <img class="cp-img" src="images/cp3-qiaohu.jpg" style="height:240px; width:auto;" alt="巧虎扭扭车">
       </div>
       <ul class="cp-points">
         <li><strong>全案策略深度定制：</strong>联合4A团队共创，输出从种草策略、内容SOP到投放节奏的全链路方案，配套精细化逐字脚本，确保执行层的专业度与连贯性。</li>
@@ -553,7 +778,7 @@
     <h2 class="section-title"><span class="section-num">04</span> 自驱作品</h2>
     <div class="works-grid">
       <div class="work-item">
-        <img class="work-item-img" src="https://aka.doubaocdn.com/s/BmFKeVm4Cw" alt="抖音账号">
+        <img class="work-item-img" src="images/self-douyin.jpg" alt="抖音账号">
         <div class="work-item-title">@圆子圆子不要生气 ｜ 短视频</div>
         <div class="work-item-highlights">
           <span class="wh-tag rocket">🚀 独立运营·从0到1冷启动</span>
@@ -562,7 +787,7 @@
         <div class="work-item-desc">0基础起号，验证内容定位与爆款逻辑，独立完成选题、脚本、拍摄、剪辑及发布；产出单条视频播放量550w+、点赞8.6w+的爆款，展现了独立的内容策划与网感。</div>
       </div>
       <div class="work-item">
-        <img class="work-item-img" src="张张表情包图片.jpg" alt="微信表情">
+        <img class="work-item-img" src="images/self-emoji.jpg" alt="微信表情">
         <div class="work-item-title">原创微信表情 · 可爱小张张系列</div>
         <div class="work-item-highlights">
           <span class="wh-tag rocket">🚀 独立美术设计·全平台运营</span>
@@ -571,7 +796,7 @@
         <div class="work-item-desc">独立创作并发布原创表情包《可爱小张张》三弹，凭借对大众情绪的洞察和创意表达，总发送量突破3亿，远超同期竞品，并获得变现3k+。</div>
       </div>
       <div class="work-item">
-        <img class="work-item-img" src="https://aka.doubaocdn.com/s/XXIiyQUMpn" alt="杀糕局">
+        <img class="work-item-img" src="images/self-cake.jpg" alt="杀糕局">
         <div class="work-item-title">线下创意IP ·「杀糕局」主题社交</div>
         <div class="work-item-highlights">
           <span class="wh-tag rocket">🚀 发起人·社群策划与现场控场</span>
@@ -591,7 +816,7 @@
         <div class="edu-info">
           <div class="edu-row">
             <span class="edu-icon">🎓</span>
-            <span><strong>浙江工商大学</strong>｜工商管理 本科（2020届），主修市场营销与管理学</span>
+            <span><strong>浙江工商大学</strong>工商管理 本科（2020届），主修市场营销与管理学</span>
           </div>
           <div class="edu-row">
             <span class="edu-icon">📜</span>
@@ -630,7 +855,7 @@
       </div>
       <div style="align-self:start; display:flex; justify-content:center;">
         <div class="card" style="padding:16px; max-width:280px; width:100%;">
-          <img src="ENFJ图片.jpg" alt="ENFJ人生说明书" style="width:100%; border-radius:8px; display:block;">
+          <img src="images/ENFJ图片.jpg" alt="ENFJ人生说明书" style="width:100%; border-radius:8px; display:block;">
         </div>
       </div>
       <div class="edu-footer">
@@ -649,31 +874,109 @@
   </div>
 </section>
 
+<!-- ========== 桌面端：右侧固定侧边栏 ========== -->
+<aside class="side-nav" aria-label="页面导航">
+  <a class="s-nav-item" data-target="section-01" href="#section-01"><div class="s-num">01</div><div class="s-text">工作经历</div></a>
+  <a class="s-nav-item" data-target="section-02" href="#section-02"><div class="s-num">02</div><div class="s-text">项目经验</div></a>
+  <a class="s-nav-item" data-target="section-03" href="#section-03"><div class="s-num">03</div><div class="s-text">核心项目阐述</div></a>
+  <a class="s-nav-item" data-target="section-04" href="#section-04"><div class="s-num">04</div><div class="s-text">自驱作品</div></a>
+  <a class="s-nav-item" data-target="section-05" href="#section-05"><div class="s-num">05</div><div class="s-text">教育与底色</div></a>
+</aside>
+
+<!-- ========== 移动端 / 小桌面：☰ 浮标 + 抽屉 + 遮罩 ========== -->
+<button class="m-nav-toggle" aria-label="打开目录">☰</button>
+<div class="m-nav-mask" aria-hidden="true"></div>
+<aside class="m-nav-drawer" aria-label="移动端目录">
+  <button class="m-nav-close" aria-label="关闭目录">✕</button>
+  <div class="m-nav-title">CONTENTS</div>
+  <div class="m-nav-head">目录导航</div>
+  <a class="m-nav-item" data-target="section-01" href="#section-01"><div class="m-num">01</div><div class="m-text">工作经历</div></a>
+  <a class="m-nav-item" data-target="section-02" href="#section-02"><div class="m-num">02</div><div class="m-text">项目经验</div></a>
+  <a class="m-nav-item" data-target="section-03" href="#section-03"><div class="m-num">03</div><div class="m-text">核心项目阐述</div></a>
+  <a class="m-nav-item" data-target="section-04" href="#section-04"><div class="m-num">04</div><div class="m-text">自驱作品</div></a>
+  <a class="m-nav-item" data-target="section-05" href="#section-05"><div class="m-num">05</div><div class="m-text">教育与底色</div></a>
+</aside>
+
 <script>
-  document.querySelectorAll('.toc-item').forEach(item => {
-    item.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('data-target');
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        const offset = targetEl.getBoundingClientRect().top + window.pageYOffset - 20;
-        window.scrollTo({ top: offset, behavior: 'smooth' });
-      }
-    });
-  });
-  const tocItems = document.querySelectorAll('.toc-item');
-  const sections = ['section-01','section-02','section-03','section-04','section-05'];
-  function highlightToc() {
-    const scrollPos = window.pageYOffset + window.innerHeight / 3;
-    let currentIdx = -1;
-    sections.forEach((id, idx) => {
-      const el = document.getElementById(id);
-      if (el && el.offsetTop <= scrollPos) currentIdx = idx;
-    });
-    tocItems.forEach((el, idx) => el.classList.toggle('active', idx === currentIdx));
+  /* ===== 复制联系方式 ===== */
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('已复制：' + text);
+      }).catch(() => {
+        alert('请手动复制：' + text);
+      });
+    } else {
+      alert('请手动复制：' + text);
+    }
   }
-  window.addEventListener('scroll', highlightToc);
-  highlightToc();
+
+  /* ===== 统一导航：原目录卡片 + 桌面侧边栏 + 手机抽屉 ===== */
+  (function initNavigation() {
+    const sections = ['section-01','section-02','section-03','section-04','section-05'];
+    // 用 data-target 统一选中所有导航项（三种形态一网打尽）
+    const allNavItems = document.querySelectorAll('[data-target]');
+
+    // 1) 点击任意导航项 → 平滑滚动 + 关闭抽屉（若是抽屉项）
+    allNavItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const offset = targetEl.getBoundingClientRect().top + window.pageYOffset - 20;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+        // 若是抽屉点击，跳转后自动关闭抽屉
+        if (this.classList.contains('m-nav-item')) closeDrawer();
+      });
+    });
+
+    // 2) 滚动高亮：同一个 data-target 的所有导航项同时 active
+    function highlightNav() {
+      const scrollPos = window.pageYOffset + window.innerHeight / 3;
+      let currentIdx = -1;
+      sections.forEach((id, idx) => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollPos) currentIdx = idx;
+      });
+      const currentTarget = currentIdx >= 0 ? sections[currentIdx] : null;
+      allNavItems.forEach(el => {
+        const match = el.getAttribute('data-target') === currentTarget;
+        el.classList.toggle('active', match);
+        // 手机/桌面都支持的 aria 标记
+        if (match) el.setAttribute('aria-current', 'true');
+        else el.removeAttribute('aria-current');
+      });
+    }
+    window.addEventListener('scroll', highlightNav, { passive: true });
+    highlightNav();
+
+    // 3) 抽屉开关（☰ 按钮 / ✕ 按钮 / 点遮罩 / ESC 键）
+    const toggleBtn = document.querySelector('.m-nav-toggle');
+    const drawer = document.querySelector('.m-nav-drawer');
+    const mask = document.querySelector('.m-nav-mask');
+    const closeBtn = document.querySelector('.m-nav-close');
+
+    function openDrawer() {
+      if (!drawer) return;
+      drawer.classList.add('show');
+      mask && mask.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      if (!drawer) return;
+      drawer.classList.remove('show');
+      mask && mask.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    if (toggleBtn) toggleBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (mask) mask.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && drawer && drawer.classList.contains('show')) closeDrawer();
+    });
+  })();
 
   /* ===== 点击图片 → 全屏灯箱预览 ===== */
   (function initLightbox() {
