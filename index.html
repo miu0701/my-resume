@@ -452,7 +452,8 @@
     /* 目录 */
     .toc-section { padding: 56px 0; }
     .toc-title { font-size: 22px; margin-bottom: 32px; }
-    .toc-item { padding: 12px 14px; border-radius: 10px; }
+    .toc-grid { gap: 10px; }
+    .toc-item { padding: 8px 8px; border-radius: 8px; min-width: auto; }
     .toc-num { font-size: 20px; }
     .toc-text { font-size: 13px; }
 
@@ -477,8 +478,8 @@
     .core-project { margin-bottom: 32px; }
     .cp-header { margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
     .cp-badge { font-size: 11px; padding: 5px 12px; }
-    .cp-images { gap: 10px; margin-bottom: 16px; }
-    .cp-img { height: 170px !important; border-width: 2px; border-radius: 8px; }
+    .cp-images { flex-wrap: nowrap; gap: 8px; margin-bottom: 16px; }
+    .cp-img { height: auto !important; width: calc(33.333% - 6px); max-height: 160px; border-width: 2px; border-radius: 8px; }
     .cp-points li { padding-left: 16px; margin-bottom: 6px; }
     .cp-points li::before { top: 8px; width: 6px; height: 6px; }
 
@@ -489,7 +490,8 @@
     /* 教育与底色 */
     .edu-grid { gap: 16px; }
     .traits-label { font-size: 12px; margin: 16px 0 8px; }
-    .trait-tag { font-size: 12px; padding: 5px 12px; }
+    .trait-tags { flex-wrap: nowrap; gap: 6px; }
+    .trait-tag { font-size: 10.5px; padding: 4px 9px; white-space: nowrap; }
     .skills-grid { gap: 8px; }
     .skill-box { padding: 10px; border-radius: 6px; }
     .skill-title { font-size: 12px; margin-bottom: 2px; }
@@ -515,11 +517,14 @@
     .hero-name { font-size: 24px; }
     .hero-photo { width: 100px; height: auto; }
     .tag { padding: 4px 8px; font-size: 9px; }
-    .toc-grid { gap: 16px; }
-    .toc-item { padding: 10px 10px; }
+    .toc-grid { gap: 6px; }
+    .toc-item { padding: 6px 4px; min-width: auto; border-radius: 6px; }
     .toc-num { font-size: 18px; }
-    .toc-text { font-size: 12px; }
-    .cp-img { height: 150px !important; }
+    .toc-text { font-size: 11.5px; }
+    .cp-images { gap: 6px; }
+    .cp-img { width: calc(33.333% - 4px); max-height: 140px; }
+    .trait-tags { gap: 4px; }
+    .trait-tag { font-size: 9.5px; padding: 3px 7px; }
   }
 </style>
 </head>
